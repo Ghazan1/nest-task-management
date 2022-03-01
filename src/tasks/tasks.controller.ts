@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
-import { Tasks } from './tasks.model';
+import { Tasks, TasksStatus } from './tasks.model';
 import { TasksService } from './tasks.service';
 
 @Controller('tasks')
@@ -29,6 +29,12 @@ export class TasksController {
     @Delete('/:id')
     deleteTaskByID(@Param('id') id: string): void{
        return this._taskService.deleteTaskByID(id);
+ 
+    }
+
+    @Delete('/:id/status')
+    updateTaskStatus(@Param('id') id: string , @Body('status') status: TasksStatus): Tasks{
+       return this._taskService.updateTaskStatus(id,status);
  
     }
 }
