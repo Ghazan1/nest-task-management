@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
+import { AuthCredtentialDTO } from './dto/user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserRepository } from './user.repository';
+import { UserEntity } from './entities/user.entity';
 
 @Injectable()
 export class AuthService {
@@ -10,8 +10,8 @@ export class AuthService {
     @InjectRepository(UserRepository) private _userRepository: UserRepository,
   ) {}
 
-  create(createAuthDto: CreateAuthDto) {
-    return 'This action adds a new auth';
+  async signUp(createAuthDto: AuthCredtentialDTO): Promise<void> {
+    return this._userRepository.createUser(createAuthDto);
   }
 
   findAll() {
@@ -22,7 +22,7 @@ export class AuthService {
     return `This action returns a #${id} auth`;
   }
 
-  update(id: number, updateAuthDto: UpdateAuthDto) {
+  update(id: number) {
     return `This action updates a #${id} auth`;
   }
 
