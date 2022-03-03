@@ -5,8 +5,6 @@ import { Task } from './entities/task.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { Tasks, TasksStatus } from './tasks.model';
-import { tsTsxJsJsxRegex } from 'ts-loader/dist/constants';
-import { response } from 'express';
 
 @Injectable()
 export class TasksService {
