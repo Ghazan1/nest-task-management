@@ -1,15 +1,11 @@
 /* eslint-disable prettier/prettier */
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { CreateTaskDto } from './dto/create-task.dto';
 import { Task } from './entities/task.entity';
-import { Tasks, TasksStatus } from './tasks.model';
 import { TasksService } from './tasks.service';
 
 @Controller('tasks')
 export class TasksController {
   constructor(private _taskService: TasksService) {}
-
-  
 
   // @Get()
   // getAllTasks(): Tasks[] {
