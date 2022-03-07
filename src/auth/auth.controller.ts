@@ -7,11 +7,13 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('/signup')
-  create(@Body() createAuthDto: AuthCredtentialDTO) {
+  create(@Body() createAuthDto: AuthCredtentialDTO): Promise<void> {
     return this.authService.signUp(createAuthDto);
   }
   @Post('/signin')
-  signIn(@Body() createAuthDto: AuthCredtentialDTO) {
+  signIn(
+    @Body() createAuthDto: AuthCredtentialDTO,
+  ): Promise<{ accessToken: string }> {
     return this.authService.signIn(createAuthDto);
   }
   // @Get()
